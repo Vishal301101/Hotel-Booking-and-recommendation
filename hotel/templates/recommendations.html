@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Recommendations</title>
+</head>
+<body>
+    <h1>Hotel Recommendations</h1>
+    <p>Based on your activities, we recommend the following hotels:</p>
+    <ul>
+        {% for recommended_hotel in recommended_hotels %}
+            <li>{{ recommended_hotel.name }} - Rating: {{ recommended_hotel.ratings }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Hotel Booking Platform</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Hotel Booking Platform</h1>
+        {% if user.is_authenticated %}
+        <p>Logged in as {{ user.username }} | <a href="{% url 'logout' %}">Logout</a></p>
+    {% endif %}
+    </header>
+    
+    <section id="hotels">
+        {% for hotel in hotels %}
+            <article class="hotel-card">
+                <h2>{{ hotel.name }}</h2>
+                <p>{{ hotel.location }}</p>
+                <p>Price: ₹{{ hotel.price }} per night</p>
+                <p>Ratings: {{ hotel.ratings }}</p>
+                
+                <button class="btn visit-btn" onclick="trackActivity({{ hotel.id }}, 'visit')">Visit</button>
+                 
+            </article>
+        {% endfor %}
+
+        <div id="activity-list"></div>
+
+    </section>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

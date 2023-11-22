@@ -1,0 +1,33 @@
+<!-- templates/draft_booking.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draft Booking</title>
+</head>
+<body>
+    <h1>Draft Booking</h1>
+    <p>You are making a draft booking for {{ hotel.name }}.</p>
+
+    <form method="post" action="{% url 'completed_booking' hotel.id %}">
+        {% csrf_token %}
+        <!-- Add form elements for capturing user details and booking information -->
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="check_in">Check-In Date:</label>
+        <input type="date" id="check_in" name="check_in" required>
+
+        <label for="check_out">Check-Out Date:</label>
+        <input type="date" id="check_out" name="check_out" required>
+
+        <!-- Add more fields as needed -->
+
+        <button type="submit">Complete Booking</button>
+    </form>
+</body>
+</html>
